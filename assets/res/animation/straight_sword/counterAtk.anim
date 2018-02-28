@@ -1,0 +1,58 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "counterAtk",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.2,
+  "sample": 30,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "position": []
+    },
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "dfcbfe6a-075e-44ff-94fc-4ba420cee63a"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "dfcbfe6a-075e-44ff-94fc-4ba420cee63a"
+            }
+          },
+          {
+            "frame": 0.06666666666666667,
+            "value": {
+              "__uuid__": "08af67a0-6a01-4ae5-a075-e668fa724e68"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "08af67a0-6a01-4ae5-a075-e668fa724e68"
+            }
+          },
+          {
+            "frame": 0.13333333333333333,
+            "value": {
+              "__uuid__": "9c06260d-a150-442e-95ee-2d0027f4cf5a"
+            }
+          },
+          {
+            "frame": 0.16666666666666666,
+            "value": {
+              "__uuid__": "9c06260d-a150-442e-95ee-2d0027f4cf5a"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

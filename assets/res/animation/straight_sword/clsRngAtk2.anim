@@ -1,0 +1,83 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "clsRngAtk2",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.5333333333333333,
+  "sample": 30,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "position": []
+    },
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "b5a445c4-35e6-46c4-85c4-284f8e07e012"
+            }
+          },
+          {
+            "frame": 0.23333333333333334,
+            "value": {
+              "__uuid__": "b5a445c4-35e6-46c4-85c4-284f8e07e012"
+            }
+          },
+          {
+            "frame": 0.26666666666666666,
+            "value": {
+              "__uuid__": "aa17d303-2218-48d0-bfcd-0aa95134cd52"
+            }
+          },
+          {
+            "frame": 0.36666666666666664,
+            "value": {
+              "__uuid__": "aa17d303-2218-48d0-bfcd-0aa95134cd52"
+            }
+          },
+          {
+            "frame": 0.4,
+            "value": {
+              "__uuid__": "1198ca5e-9c8d-4c81-ad1c-6a0df62b89f8"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "1198ca5e-9c8d-4c81-ad1c-6a0df62b89f8"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": [
+    {
+      "frame": 0,
+      "func": "comboController",
+      "params": []
+    },
+    {
+      "frame": 0.03333333333333333,
+      "func": "comboController",
+      "params": [
+        true
+      ]
+    },
+    {
+      "frame": 0.5,
+      "func": "comboController",
+      "params": [
+        false
+      ]
+    },
+    {
+      "frame": 0.5,
+      "func": "doComboController",
+      "params": []
+    }
+  ]
+}

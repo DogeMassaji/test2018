@@ -1,0 +1,28 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "dropping",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.03333333333333333,
+  "sample": 30,
+  "speed": 1,
+  "wrapMode": 2,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "2f69a062-53c0-4523-a72a-8d60418f0eba"
+            }
+          }
+        ]
+      }
+    },
+    "props": {
+      "position": []
+    }
+  },
+  "events": []
+}

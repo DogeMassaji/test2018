@@ -4,17 +4,30 @@ var Actor = cc.Class({
     extends: cc.Component,
 
     properties: {
-        // 速度
-        speed: 0,
+        // 初始水平方向速度
+        initXSpeed: 0,
+        // 初始垂直方向速度
+        initYSpeed: 0,
+        // 水平方向速度
+        xSpeed: 0,
+        // 垂直方向速度
+        ySpeed: 0,
+        // 加速度
+        accSpeed: 0,
         /**
          * 方向
          * @description "右"为true，"左"为false
          */
         toward: true,
-        // 站立flag
+
+        currentState: null,
+        lastState: null,
+
         standFlg: false,
-        // 跑动flag
         runFlg: false,
+        jumpFlg: false,
+        dropFlg: false,
+
         // 动画组件
         anim: null,
     },
@@ -55,10 +68,10 @@ var Actor = cc.Class({
     },
 
     /**
-     * @function 转向并移动
-     * @description 在动作进行期间可转向并移动
+     * @function 水平方向上转向并移动
+     * @description 在动作进行期间水平方向上可转向并移动
      */
-    turnNMove: function () {
+    horMove: function () {
         var position = this.node.getPosition();
 
         if (this.toward) {
@@ -66,69 +79,98 @@ var Actor = cc.Class({
             if (position.x >= frozenObj.FRAME_WIDTH / 2) {
                 this.xSpeed = 0;
             } else {
-                this.xSpeed = this.speed;
+                this.xSpeed = this.initXSpeed;
             }
         } else {
             this.node.scaleX = -1;
             if (position.x <= -frozenObj.FRAME_WIDTH / 2) {
-                this.speed = 0;
+                this.xSpeed = 0;
             } else {
-                this.xSpeed = -this.speed;
+                this.xSpeed = -this.initXSpeed;
             }
         }
+
+        this.node.x += this.xSpeed;
+    },
+
+    /**
+     * @function 垂直方向移动
+     * @description 在动作进行期间垂直方向上可转向并移动
+     */
+    verMove: function () {
+        this.ySpeed -= this.accSpeed;
+        this.node.y += this.ySpeed;
     },
 
     run: function () {
-        this.turnNMove();
+        this.horMove();
         this.doAction(frozenObj.RUN);
-        this.node.x += this.xSpeed;
     },
 
     stand: function () {
         this.doAction(frozenObj.STAND);
+        this.xSpeed = 0;
+        this.ySpeed = 0;
     },
 
     jump: function () {
-        this.turnNMove();
         this.doAction(frozenObj.JUMP);
-        this.node.x += this.xSpeed;
-        this.node.y += this.ySpeed;
+    },
+
+    jumping: function () {
+        this.doAction(frozenObj.JUMPING);
+    },
+
+    dropping: function () {
+        this.doAction(frozenObj.DROPPING);
     },
 
     drop: function () {
-        var position = this.node.getPosition();
-        this.turnNMove();
         this.doAction(frozenObj.DROP);
-        this.node.x += this.xSpeed;
-        this.node.y -= this.speed;
     },
 
     roll: function () {
-        // do nothing...
+        this.doAction(frozenObj.ROLL);
     },
 
-    lightAttack: function () {
-        this.dntTurnNDoAction(frozenObj.HIT_L);
+    block: function () {
+        this.doAction(frozenObj.BLOCK);
     },
 
-    heightAttack: function () {
-        this.dntTurnNDoAction(frozenObj.HIT_H);
+    clsRngAtk1: function () {
+        this.doAction(frozenObj.CLSRNGATK1);
+    },
+
+    clsRngAtk2: function () {
+        this.doAction(frozenObj.CLSRNGATK2);
+    },
+
+    clsRngAtk3: function () {
+        this.doAction(frozenObj.CLSRNGATK3);
+    },
+
+    midRngAtk1: function () {
+        this.doAction(frozenObj.MIDRNGATK1);
+    },
+
+    midRngAtk2: function () {
+        this.doAction(frozenObj.MIDRNGATK2);
+    },
+
+    midRngAtk3: function () {
+        this.doAction(frozenObj.MIDRNGATK3);
     },
 
     skill: function () {
-        // do nothing...
+        this.doAction(frozenObj.SKILL);
     },
 
-    hitten: function () {
-        this.doAction(frozenObj.HITTEN);
-    },
-
-    lay: function () {
-        // do nothing...
+    counterAtk: function () {
+        this.doAction(frozenObj.COUNTERATK);
     },
 
     catched: function () {
-        // do nothing...
+        this.doAction(frozenObj.CATCHED);
     },
 
     die: function () {

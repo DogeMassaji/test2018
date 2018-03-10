@@ -204,8 +204,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 0,
-      "height": 0
+      "width": 168,
+      "height": 84
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -231,9 +231,11 @@
       "__id__": 4
     },
     "_enabled": true,
-    "_spriteFrame": null,
+    "_spriteFrame": {
+      "__uuid__": "ff890b0f-5d70-4756-9bf0-7cc7f39050a9"
+    },
     "_type": 0,
-    "_sizeMode": 1,
+    "_sizeMode": 2,
     "_fillType": 0,
     "_fillCenter": {
       "__type__": "cc.Vec2",
@@ -242,10 +244,12 @@
     },
     "_fillStart": 0,
     "_fillRange": 0,
-    "_isTrimmedMode": true,
+    "_isTrimmedMode": false,
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
-    "_atlas": null
+    "_atlas": {
+      "__uuid__": "a43bd0cf-1af9-41c8-a1a3-b0706f93f00f"
+    }
   },
   {
     "__type__": "cc.Animation",
@@ -319,12 +323,20 @@
       {
         "__uuid__": "1071f064-6991-4b9d-81c3-d0f00eebebd4"
       },
-      null,
+      {
+        "__uuid__": "e3f8b124-b87c-4697-a311-55974295d349"
+      },
       {
         "__uuid__": "63178d95-7051-45fa-a3b6-21e657766710"
       },
       {
         "__uuid__": "c3b467eb-bcd2-489c-aa14-d74d2c2d4924"
+      },
+      {
+        "__uuid__": "58566b63-548e-48a5-88c8-f2d302268842"
+      },
+      {
+        "__uuid__": "109f1c93-cb65-4db7-8dd6-cc50cf325456"
       }
     ],
     "playOnLoad": true
@@ -337,10 +349,18 @@
       "__id__": 4
     },
     "_enabled": true,
-    "speed": 0,
+    "initXSpeed": 0,
+    "initYSpeed": 0,
+    "xSpeed": 0,
+    "ySpeed": 0,
+    "accSpeed": 0,
     "toward": true,
+    "currentState": null,
+    "lastState": null,
     "standFlg": false,
     "runFlg": false,
+    "jumpFlg": false,
+    "dropFlg": false,
     "anim": null
   },
   {

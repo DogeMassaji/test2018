@@ -1,0 +1,58 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "attackedHard",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.2,
+  "sample": 30,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "position": []
+    },
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "962ff21c-7fbe-45ef-89e7-fcf20adc726f"
+            }
+          },
+          {
+            "frame": 0.03333333333333333,
+            "value": {
+              "__uuid__": "962ff21c-7fbe-45ef-89e7-fcf20adc726f"
+            }
+          },
+          {
+            "frame": 0.06666666666666667,
+            "value": {
+              "__uuid__": "c1c97bed-c620-4ee9-8679-f242a9e7ff88"
+            }
+          },
+          {
+            "frame": 0.1,
+            "value": {
+              "__uuid__": "c1c97bed-c620-4ee9-8679-f242a9e7ff88"
+            }
+          },
+          {
+            "frame": 0.13333333333333333,
+            "value": {
+              "__uuid__": "ff890b0f-5d70-4756-9bf0-7cc7f39050a9"
+            }
+          },
+          {
+            "frame": 0.16666666666666666,
+            "value": {
+              "__uuid__": "ff890b0f-5d70-4756-9bf0-7cc7f39050a9"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

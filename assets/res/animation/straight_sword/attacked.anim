@@ -3,7 +3,7 @@
   "_name": "attacked",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 0.4,
+  "_duration": 0.26666666666666666,
   "sample": 30,
   "speed": 1,
   "wrapMode": 1,
@@ -36,30 +36,6 @@
             "frame": 0.23333333333333334,
             "value": {
               "__uuid__": "962ff21c-7fbe-45ef-89e7-fcf20adc726f"
-            }
-          },
-          {
-            "frame": 0.26666666666666666,
-            "value": {
-              "__uuid__": "c1c97bed-c620-4ee9-8679-f242a9e7ff88"
-            }
-          },
-          {
-            "frame": 0.3,
-            "value": {
-              "__uuid__": "c1c97bed-c620-4ee9-8679-f242a9e7ff88"
-            }
-          },
-          {
-            "frame": 0.3333333333333333,
-            "value": {
-              "__uuid__": "ff890b0f-5d70-4756-9bf0-7cc7f39050a9"
-            }
-          },
-          {
-            "frame": 0.36666666666666664,
-            "value": {
-              "__uuid__": "ff890b0f-5d70-4756-9bf0-7cc7f39050a9"
             }
           }
         ]

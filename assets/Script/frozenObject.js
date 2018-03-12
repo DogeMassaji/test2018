@@ -1,4 +1,4 @@
-var frozenObject = {
+var FrozenObject = {
     LEFT: Object.freeze('left'),
     RIGHT: Object.freeze('right'),
     UP: Object.freeze('up'),
@@ -49,4 +49,4 @@ var frozenObject = {
     ROLLFLG: Object.freeze('rollFlg'),
 };
 
-module.exports = frozenObject;
+module.exports = FrozenObject;

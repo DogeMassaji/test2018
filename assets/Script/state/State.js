@@ -7,10 +7,10 @@ var State = cc.Class({
     defaultState: function (player) {
         if (player.runLeftFlg === true | player.runRightFlg === true) {
             player.run(player.initXSpeed);
-            player.currentState = player.stateObjs.runState;
+            player.currentState = player.statePool.runState;
         } else {
             player.stand();
-            player.currentState = player.stateObjs.standState;
+            player.currentState = player.statePool.standState;
         }
     },
 });

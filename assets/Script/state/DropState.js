@@ -13,9 +13,9 @@ var DropState = cc.Class({
 
     actionHandler: function (player) {
         if (!player.anim.getAnimationState(FrozenObj.DROP).isPlaying) {
-            player.currentState = player.stateObjs.standState;
+            player.currentState = player.statePool.standState;
         }
-        player.lastState = player.stateObjs.dropState;
+        player.lastState = player.statePool.dropState;
     },
 });
 

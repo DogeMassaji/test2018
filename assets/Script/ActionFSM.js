@@ -1,5 +1,4 @@
 var FrozenObj = require('FrozenObject');
-var actionInFSM = require('ActionInFSM');
 
 cc.Class({
     extends: cc.Component,

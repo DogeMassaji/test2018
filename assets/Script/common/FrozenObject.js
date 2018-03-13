@@ -40,13 +40,22 @@ var FrozenObject = {
 
 
     STANDFLG: Object.freeze('standFlg'),
-    RUNFLG: Object.freeze('runFlg'),
-    BLOCKFLG: Object.freeze('blockFlg'),
+    //RUNFLG: Object.freeze('runFlg'),
+    LEFTFLG: Object.freeze('leftFlg'),
+    RIGHTFLG: Object.freeze('rightFlg'),
+    UPFLG: Object.freeze('upFlg'),
     DOWNFLG: Object.freeze('downFlg'),
-    ATTACKFLG: Object.freeze('attackFlg'),
-    SKILLFLG: Object.freeze('skillFlg'),
     JUMPFLG: Object.freeze('jumpFlg'),
     ROLLFLG: Object.freeze('rollFlg'),
+    LIGHTATKFLG: Object.freeze('lightAtkFlg'),
+    HEAVYATKFLG: Object.freeze('heavyAtkFlg'),
+    SKILLFLG: Object.freeze('skillFlg'),
+    BLOCKFLG: Object.freeze('blockFlg'),
+    //ATTACKFLG: Object.freeze('attackFlg'),
+
+    RELEASED: Object.freeze('released'),
+    PRESSED: Object.freeze('pressed'),
+    BEINGPRESSED: Object.freeze('beingPressed'),
 };
 
 module.exports = FrozenObject;

@@ -11,15 +11,16 @@ var StandState = cc.Class({
     },
 
     actionHandler: function (player) {
-        switch (player.currentFlg) {
-            case FrozenObj.RUNFLG:
+        switch (player.input.name) {
+            case FrozenObj.LEFTFLG:
+            case FrozenObj.RIGHTFLG:
                 player.run(player.initXSpeed);
-                player.currentState = player.stateObjs.runState;
+                player.currentState = player.statePool.runState;
                 break;
             case FrozenObj.JUMPFLG:
-                if (player.lastState !== player.stateObjs.dropState) {
+                if (player.lastState !== player.statePool.dropState) {
                     player.jump();
-                    player.currentState = player.stateObjs.jumpState;
+                    player.currentState = player.statePool.jumpState;
                 } else {
                     this.defaultState(player);
                 }
@@ -39,7 +40,7 @@ var StandState = cc.Class({
                 this.defaultState(player);
                 break;
         }
-        player.lastState = player.stateObjs.standState;
+        player.lastState = player.statePool.standState;
     },
 });
 

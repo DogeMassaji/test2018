@@ -12,10 +12,10 @@ var JumpState = cc.Class({
 
     actionHandler: function (player) {
         if (!player.anim.getAnimationState(FrozenObj.JUMP).isPlaying) {
-            player.currentState = player.stateObjs.jumpingState;
+            player.currentState = player.statePool.jumpingState;
             player.ySpeed = player.initYSpeed;
         }
-        player.lastState = player.stateObjs.jumpState;
+        player.lastState = player.statePool.jumpState;
     },
 });
 

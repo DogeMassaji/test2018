@@ -11,13 +11,14 @@ var RunState = cc.Class({
     },
 
     actionHandler: function (player) {
-        switch (player.currentFlg) {
-            case FrozenObj.RUNFLG:
+        switch (player.input.name) {
+            case FrozenObj.LEFTFLG:
+            case FrozenObj.RIGHTFLG:
                 player.run(player.initXSpeed);
                 break;
             case FrozenObj.JUMPFLG:
                 player.jump();
-                player.currentState = player.stateObjs.jumpState;
+                player.currentState = player.statePool.jumpState;
                 break;
             /* case FrozenObj.ATTACKFLG:
                 playerAttack();
@@ -34,7 +35,7 @@ var RunState = cc.Class({
                 this.defaultState(player);
                 break;
         }
-        player.lastState = player.stateObjs.runState;
+        player.lastState = player.statePool.runState;
     },
 });
 

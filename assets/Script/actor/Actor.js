@@ -18,23 +18,20 @@ var Actor = cc.Class({
         // 方向
         toward: FrozenObj.RIGHT,
 
+        statePool: null,
+
         currentState: null,
         lastState: null,
+
+        inputPool: null,
+
+        input: null,
 
         standFlg: false,
         runLeftFlg: false,
         runRightFLg: false,
         jumpFlg: false,
         dropFlg: false,
-
-        inputFlg: {
-            currentFlg: FrozenObj.STANDFLG,
-            standFlg: false,
-            runLeftFlg: false,
-            runRightFlg: false,
-            jumpFlg: false,
-            dropFlg: false,
-        },
 
         // 动画组件
         anim: null,

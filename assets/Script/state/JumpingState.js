@@ -12,8 +12,9 @@ var JumpingState = cc.Class({
 
     actionHandler: function (player) {
         if (player.ySpeed > 0) {
-            switch (player.currentFlg) {
-                case FrozenObj.RUNFLG:
+            switch (player.input.name) {
+                case FrozenObj.LEFTFLG:
+                case FrozenObj.RIGHTFLG:
                     // 当jumpFlg关闭时，runFlg开启时，会继续向上跳，combo类动作应该用上其他flag判断动作执行
                     player.horMove(player.initXSpeed);
                     player.jumping();
@@ -34,14 +35,14 @@ var JumpingState = cc.Class({
                 default:
                     player.ySpeed = 0;
                     player.dropping();
-                    player.currentState = player.stateObjs.droppingState;
+                    player.currentState = player.statePool.droppingState;
                     break;
             }
         } else {
             player.dropping();
-            player.currentState = player.stateObjs.droppingState;
+            player.currentState = player.statePool.droppingState;
         }
-        player.lastState = player.stateObjs.jumpingState;
+        player.lastState = player.statePool.jumpingState;
     },
 });
 

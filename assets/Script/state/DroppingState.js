@@ -12,8 +12,9 @@ var DroppingState = cc.Class({
 
     actionHandler: function (player) {
         if (player.node.y + player.ySpeed - player.accSpeed > FrozenObj.HORIZONTAL_LINE) {
-            switch (player.currentFlg) {
-                case FrozenObj.RUNFLG:
+            switch (player.input.name) {
+                case FrozenObj.LEFTFLG:
+                case FrozenObj.RIGHTFLG:
                     player.horMove(player.initXSpeed);
                     player.dropping();
                     break;
@@ -40,9 +41,9 @@ var DroppingState = cc.Class({
         } else {
             player.node.y = FrozenObj.HORIZONTAL_LINE;
             player.drop();
-            player.currentState = player.stateObjs.dropState;
+            player.currentState = player.statePool.dropState;
         }
-        player.lastState = player.stateObjs.droppingState;
+        player.lastState = player.statePool.droppingState;
     },
 });
 

@@ -355,10 +355,14 @@
     "ySpeed": 0,
     "accSpeed": 0,
     "toward": true,
+    "statePool": null,
     "currentState": null,
     "lastState": null,
+    "inputPool": null,
+    "currentInput": null,
     "standFlg": false,
-    "runFlg": false,
+    "runLeftFlg": false,
+    "runRightFlg": false,
     "jumpFlg": false,
     "dropFlg": false,
     "anim": null
@@ -419,18 +423,6 @@
     "groupIndex": 0
   },
   {
-    "__type__": "1a87a9uJhtMo5A61GyyoqzI",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 8
-    },
-    "_enabled": true,
-    "numbersAtlas": {
-      "__uuid__": "a068a3a4-fd06-4ba0-a795-867ddb64f501"
-    }
-  },
-  {
     "__type__": "cc.Sprite",
     "_name": "",
     "_objFlags": 0,
@@ -453,6 +445,16 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_atlas": null
+  },
+  {
+    "__type__": "1703cr3Ka9FzqR9hkR40/XD",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 8
+    },
+    "_enabled": true,
+    "numbersAtlas": null
   },
   {
     "__type__": "cc.Sprite",

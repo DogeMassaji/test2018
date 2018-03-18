@@ -1,4 +1,5 @@
 var FrozenObject = {
+    // Toward
     LEFT: Object.freeze('left'),
     RIGHT: Object.freeze('right'),
     UP: Object.freeze('up'),
@@ -10,6 +11,7 @@ var FrozenObject = {
     HORIZONTAL_LINE: Object.freeze(-160),
 
 
+    // State
     STAND: Object.freeze('stand'),
     RUN: Object.freeze('run'),
     JUMP: Object.freeze('jump'),
@@ -18,17 +20,10 @@ var FrozenObject = {
     DROP: Object.freeze('drop'),
     ROLL: Object.freeze('roll'),
 
-    BLOCK: Object.freeze('block'),
-    CLSRNGATK1: Object.freeze('clsRngAtk1'),
-    CLSRNGATK2: Object.freeze('clsRngAtk2'),
-    CLSRNGATK3: Object.freeze('clsRngAtk3'),
-    MIDRANGEATK1: Object.freeze('midRngAtk1'),
-    MIDRANGEATK2: Object.freeze('midRngAtk2'),
-    MIDRANGEATK3: Object.freeze('midRngAtk3'),
-    LONGRANGEATK1: Object.freeze('longRngAtk1'),
-    LONGRANGEATK2: Object.freeze('longRngAtk2'),
-    LONGRANGEATK3: Object.freeze('longRngAtk3'),
+    LIGHTATK: Object.freeze('lightAtk'),
+    HEAVYATK: Object.freeze('heavyAtk'),
     SKILL: Object.freeze('skill'),
+    BLOCK: Object.freeze('block'),
     COUNTERATK: Object.freeze('counterAtk'),
     JUMPLIGHTATK: Object.freeze('jumpLightAtk'),
     JUMPHEAVYATK: Object.freeze('jumpHeavyAtk'),
@@ -39,8 +34,8 @@ var FrozenObject = {
     DIE: Object.freeze('die'),
 
 
+    // Input flag
     STANDFLG: Object.freeze('standFlg'),
-    //RUNFLG: Object.freeze('runFlg'),
     LEFTFLG: Object.freeze('leftFlg'),
     RIGHTFLG: Object.freeze('rightFlg'),
     UPFLG: Object.freeze('upFlg'),
@@ -51,8 +46,9 @@ var FrozenObject = {
     HEAVYATKFLG: Object.freeze('heavyAtkFlg'),
     SKILLFLG: Object.freeze('skillFlg'),
     BLOCKFLG: Object.freeze('blockFlg'),
-    //ATTACKFLG: Object.freeze('attackFlg'),
 
+
+    // Input state
     RELEASED: Object.freeze('released'),
     PRESSED: Object.freeze('pressed'),
     BEINGPRESSED: Object.freeze('beingPressed'),

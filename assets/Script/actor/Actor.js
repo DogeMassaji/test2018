@@ -25,11 +25,11 @@ var Actor = cc.Class({
 
         inputPool: null,
 
-        input: null,
+        currentInput: null,
 
         standFlg: false,
         runLeftFlg: false,
-        runRightFLg: false,
+        runRightFlg: false,
         jumpFlg: false,
         dropFlg: false,
 
@@ -61,7 +61,7 @@ var Actor = cc.Class({
      * @function 不转向执行动作
      * @description 在动作进行期间不转向并执行动作
      */
-    dntTurnNDoAction: function () {
+    dntTurnNDoAction: function (action) {
         if (!this.anim.getAnimationState(action).isPlaying) {
             if (this.toward === FrozenObj.RIGHT) {
                 this.node.scaleX = 1;
@@ -107,6 +107,13 @@ var Actor = cc.Class({
         this.node.y = (this.node.y * 10 + this.ySpeed * 10) / 10;
     },
 
+    turn: function () {
+        if (this.toward === FrozenObj.RIGHT) {
+            this.xSpeed = this.initXSpeed;
+        } else if (this.toward === FrozenObj.LEFT) {
+            this.xSpeed = -this.initXSpeed;
+        }
+    },
     run: function (speed) {
         this.horMove(speed);
         this.doAction(FrozenObj.RUN);
@@ -134,8 +141,9 @@ var Actor = cc.Class({
         this.doAction(FrozenObj.DROP);
     },
 
-    roll: function () {
-        this.doAction(FrozenObj.ROLL);
+    roll: function (speed) {
+        this.dntTurnNDoAction(FrozenObj.ROLL);
+        this.node.x += speed;
     },
 
     block: function () {

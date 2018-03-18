@@ -11,28 +11,16 @@ var DroppingState = cc.Class({
     },
 
     actionHandler: function (player) {
+        this.turn(player);
         if (player.node.y + player.ySpeed - player.accSpeed > FrozenObj.HORIZONTAL_LINE) {
-            switch (player.input.name) {
+            switch (player.currentInput.name) {
                 case FrozenObj.LEFTFLG:
                 case FrozenObj.RIGHTFLG:
                     player.horMove(player.initXSpeed);
                     player.dropping();
                     break;
-                /* case FrozenObj.JUMPFLG:
-                    if (player.runFlg === true) {
-                        player.horMove(player.initXSpeed);
-                    }
-                    player.dropping();
-                    break; */
-                /* case FrozenObj.ATTACKFLG:
-                    playerAttack();
-                    break;
-                case FrozenObj.BLOCKFLG:
-                    break;
-                case FrozenObj.SKILL:
-                    break; */
                 default:
-                    if (player.runLeftFlg === true | player.runRightFlg === true) {
+                    if (!(player.inputPool.leftFlg.currentState === FrozenObj.RELEASED && player.inputPool.rightFlg.currentState === FrozenObj.RELEASED)) {
                         player.horMove(player.initXSpeed);
                     }
                     player.dropping();

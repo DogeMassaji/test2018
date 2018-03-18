@@ -9,6 +9,7 @@ var JumpState = require('JumpState');
 var JumpingState = require('JumpingState');
 var DroppingState = require('DroppingState');
 var DropState = require('DropState');
+var RollState = require('RollState');
 
 var Input = require('Input');
 
@@ -22,6 +23,9 @@ var Player = cc.Class({
     onLoad: function () {
         // 动画状态
         this.anim = this.getComponent(cc.Animation);
+        //注册动画回调
+        this.anim.getAnimationState('drop').on('finished', this.returnStand, this);
+        this.anim.getAnimationState('roll').on('finished', this.returnStand, this);
         // 初始化状态实例
         this.statePool = {
             'standState': new StandState(),
@@ -30,6 +34,7 @@ var Player = cc.Class({
             'jumpingState': new JumpingState(),
             'droppingState': new DroppingState(),
             'dropState': new DropState(),
+            'rollState': new RollState(),
         };
         //初始化输入实例
         this.inputPool = {
@@ -65,8 +70,8 @@ var Player = cc.Class({
         }
 
         this.currentFlg = FrozenObj.STANDFLG;
-        this.input = this.inputPool.standFlg;
-        this.input.changeState(true);
+        this.currentInput = this.inputPool.standFlg;
+        this.currentInput.changeState(true);
 
         this.standFlg = true;
         this.runLeftFlg = false;
@@ -89,20 +94,26 @@ var Player = cc.Class({
             onKeyPressed: function (keyCode, event) {
                 switch (keyCode) {
                     case kbm.LEFT:
-                        self.toward = FrozenObj.LEFT;
-                        self.runLeftFlg = true;
-                        //self.currentFlg = FrozenObj.RUNFLG;
-                        self.input = self.inputPool.leftFlg;
+                        //self.toward = FrozenObj.LEFT;
+                        self.inputPool.leftFlg.changeState(true);
+                        self.currentInput = self.inputPool.leftFlg;
                         break;
                     case kbm.RIGHT:
-                        self.toward = FrozenObj.RIGHT;
-                        self.runRightFlg = true;
-                        //self.currentFlg = FrozenObj.RUNFLG;
-                        self.input = self.inputPool.rightFlg;
+                        //self.toward = FrozenObj.RIGHT;
+                        self.inputPool.rightFlg.changeState(true);
+                        self.currentInput = self.inputPool.rightFlg;
                         break;
                     case kbm.UP:
                         break;
                     case kbm.DOWN:
+                        break;
+                    case kbm.JUMP:
+                        self.inputPool.jumpFlg.changeState(true);
+                        self.currentInput = self.inputPool.jumpFlg;
+                        break;
+                    case kbm.ROLL:
+                        self.inputPool.rollFlg.changeState(true);
+                        self.currentInput = self.inputPool.rollFlg;
                         break;
                     case kbm.LIGHTATK:
                         break;
@@ -112,42 +123,37 @@ var Player = cc.Class({
                         break;
                     case kbm.BLOCK:
                         break;
-                    case kbm.JUMP:
-                        if (self.readyJump === true | self.currentState === self.statePool.jumpingState) {
-                            self.jumpFlg = true;
-                            //self.currentFlg = FrozenObj.JUMPFLG;
-                            self.input = self.inputPool.jumpFlg;
-                            self.readyJump = false;
-                        } else {
-                            //self.currentFlg = FrozenObj.STANDFLG;
-                            self.input = self.inputPool.standFlg;
-                        }
-                        break;
-                    case kbm.ROLL:
+                    default:
                         break;
                 }
             },
             onKeyReleased: function (keyCode, envet) {
                 switch (keyCode) {
                     case kbm.LEFT:
-                        if (self.runRightFlg === true) {
+                        /* if (self.inputPool.rightFlg.currentState !== FrozenObj.RELEASED) {
                             self.toward = FrozenObj.RIGHT;
-                        }
-                        self.runLeftFlg = false;
-                        //self.currentFlg = FrozenObj.STANDFLG;
-                        self.input = self.inputPool.standFlg;
+                        } */
+                        self.inputPool.leftFlg.changeState(false);
+                        self.currentInput = self.inputPool.standFlg;
                         break;
                     case kbm.RIGHT:
-                        if (self.runLeftFlg === true) {
+                        /* if (self.inputPool.leftFlg.currentState !== FrozenObj.RELEASED) {
                             self.toward = FrozenObj.LEFT;
-                        }
-                        self.runRightFlg = false;
-                        //self.currentFlg = FrozenObj.STANDFLG;
-                        self.input = self.inputPool.standFlg;
+                        } */
+                        self.inputPool.rightFlg.changeState(false);
+                        self.currentInput = self.inputPool.standFlg;
                         break;
                     case kbm.UP:
                         break;
                     case kbm.DOWN:
+                        break;
+                    case kbm.JUMP:
+                        self.inputPool.jumpFlg.changeState(false);
+                        self.currentInput = self.inputPool.standFlg;
+                        break;
+                    case kbm.ROLL:
+                        self.inputPool.rollFlg.changeState(false);
+                        self.currentInput = self.inputPool.standFlg;
                         break;
                     case kbm.LIGHTATK:
                         break;
@@ -157,13 +163,7 @@ var Player = cc.Class({
                         break;
                     case kbm.BLOCK:
                         break;
-                    case kbm.JUMP:
-                        self.jumpFlg = false;
-                        //self.currentFlg = FrozenObj.DROPFLG;
-                        self.input = self.inputPool.standFlg;
-                        self.readyJump = true;
-                        break;
-                    case kbm.ROLL:
+                    default:
                         break;
                 }
             }
@@ -179,5 +179,12 @@ var Player = cc.Class({
 
     stateHandler: function () {
         this.currentState.actionHandler(this);
+    },
+
+    /**
+     * 动画结束回调函数
+     */
+    returnStand: function () {
+        this.currentState = this.statePool.standState;
     },
 });

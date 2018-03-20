@@ -1,19 +1,18 @@
 var State = require('State');
 var FrozenObj = require('FrozenObject');
 
-var RollState = cc.Class({
+var CounterAtkState = cc.Class({
     extends: State,
 
     properties: {
         name: {
-            default: FrozenObj.ROLL,
+            default: FrozenObj.COUNTERATK,
         }
     },
 
     actionHandler: function (player) {
-        player.roll();
-        player.lastState = player.statePool.rollState;
+        player.lastState = player.statePool.CounterAtkState;
     },
 });
 
-module.exports = RollState;
+module.exports = CounterAtkState;

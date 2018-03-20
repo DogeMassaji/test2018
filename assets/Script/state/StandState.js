@@ -11,7 +11,10 @@ var StandState = cc.Class({
     },
 
     actionHandler: function (player) {
+        // 方向根据方向键发生变化
         this.turn(player);
+        // 速度归零
+        player.xSpeed = 0;
         switch (player.currentInput.name) {
             case FrozenObj.LEFTFLG:
             case FrozenObj.RIGHTFLG:
@@ -28,24 +31,41 @@ var StandState = cc.Class({
                 break;
             case FrozenObj.ROLLFLG:
                 if (player.inputPool.rollFlg.currentState === FrozenObj.PRESSED) {
-                    player.turn();
-                    player.roll(player.xSpeed);
+                    player.xSpeed = player.initXSpeed;
+                    player.roll(this.xSpeed);
                     player.currentState = player.statePool.rollState;
                 } else {
                     this.defaultState(player);
                 }
                 break;
-            /* case FrozenObj.ATTACKFLG:
-                playerAttack();
+            case FrozenObj.LIGHTATKFLG:
+                if (player.inputPool.lightAtkFlg.currentState === FrozenObj.PRESSED) {
+                    player.lightAtk1();
+                    player.currentState = player.statePool.lightAtkState;
+                } else {
+                    this.defaultState(player);
+                }
+                break;
+            case FrozenObj.HEAVYATKFLG:
+                if (player.inputPool.heavyAtkFlg.currentState === FrozenObj.PRESSED) {
+                    player.heavyAtk1();
+                    player.currentState = player.statePool.heavyAtkState;
+                } else {
+                    this.defaultState(player);
+                }
+                break;
+            case FrozenObj.SKILLFLG:
+                if (player.inputPool.skillFlg.currentState === FrozenObj.PRESSED) {
+                    player.skill();
+                    player.currentState = player.statePool.skillState;
+                } else {
+                    this.defaultState(player);
+                }
                 break;
             case FrozenObj.BLOCKFLG:
-                player.block();
-                player.currentState = FrozenObj.BLOCK;
+                player.block(player.xSpeed);
+                player.currentState = player.statePool.blockState;
                 break;
-            case FrozenObj.SKILL:
-                player.skill();
-                player.currentState = FrozenObj.BLOCK;
-                break; */
             default:
                 this.defaultState(player);
                 break;

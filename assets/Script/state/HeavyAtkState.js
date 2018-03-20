@@ -1,19 +1,18 @@
 var State = require('State');
 var FrozenObj = require('FrozenObject');
 
-var RollState = cc.Class({
+var HeavyAtkState = cc.Class({
     extends: State,
 
     properties: {
         name: {
-            default: FrozenObj.ROLL,
+            default: FrozenObj.HEAVYATK,
         }
     },
 
     actionHandler: function (player) {
-        player.roll();
-        player.lastState = player.statePool.rollState;
+        player.lastState = player.statePool.heavyAtkState;
     },
 });
 
-module.exports = RollState;
+module.exports = HeavyAtkState;

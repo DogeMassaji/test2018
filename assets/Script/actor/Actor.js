@@ -107,13 +107,13 @@ var Actor = cc.Class({
         this.node.y = (this.node.y * 10 + this.ySpeed * 10) / 10;
     },
 
-    turn: function () {
+    /* turn: function () {
         if (this.toward === FrozenObj.RIGHT) {
             this.xSpeed = this.initXSpeed;
         } else if (this.toward === FrozenObj.LEFT) {
             this.xSpeed = -this.initXSpeed;
         }
-    },
+    }, */
     run: function (speed) {
         this.horMove(speed);
         this.doAction(FrozenObj.RUN);
@@ -142,16 +142,37 @@ var Actor = cc.Class({
     },
 
     roll: function (speed) {
-        this.dntTurnNDoAction(FrozenObj.ROLL);
+        if (!this.anim.getAnimationState('roll').isPlaying) {
+            this.anim.play('roll');
+
+            if (this.toward === FrozenObj.RIGHT) {
+                this.node.scaleX = 1;
+                this.xSpeed = speed;
+            } else if (this.toward === FrozenObj.LEFT) {
+                this.node.scaleX = -1;
+                this.xSpeed = -speed;
+            }
+        }
+        this.node.x += this.xSpeed;
+    },
+
+    block: function (speed) {
+        this.doAction(FrozenObj.BLOCK);
         this.node.x += speed;
     },
 
-    block: function () {
-        this.doAction(FrozenObj.BLOCK);
-    },
-
-    clsRngAtk1: function () {
-        this.doAction(FrozenObj.CLSRNGATK1);
+    lightAtk1: function () {
+        if (!this.anim.getAnimationState('lightAtk1').isPlaying) {
+            this.anim.play('lightAtk1');
+            var offset = 30;
+            if (this.toward === FrozenObj.RIGHT) {
+                this.node.scaleX = 1;
+                this.node.x += offset;
+            } else if (this.toward === FrozenObj.LEFT) {
+                this.node.scaleX = -1;
+                this.node.x -= offset;
+            }
+        }
     },
 
     clsRngAtk2: function () {
@@ -162,8 +183,18 @@ var Actor = cc.Class({
         this.doAction(FrozenObj.CLSRNGATK3);
     },
 
-    midRngAtk1: function () {
-        this.doAction(FrozenObj.MIDRNGATK1);
+    heavyAtk1: function () {
+        if (!this.anim.getAnimationState('heavyAtk1').isPlaying) {
+            this.anim.play('heavyAtk1');
+            var offset = 30;
+            if (this.toward === FrozenObj.RIGHT) {
+                this.node.scaleX = 1;
+                this.node.x += offset;
+            } else if (this.toward === FrozenObj.LEFT) {
+                this.node.scaleX = -1;
+                this.node.x -= offset;
+            }
+        }
     },
 
     midRngAtk2: function () {
@@ -175,7 +206,17 @@ var Actor = cc.Class({
     },
 
     skill: function () {
-        this.doAction(FrozenObj.SKILL);
+        if (!this.anim.getAnimationState('skill').isPlaying) {
+            this.anim.play('skill');
+            var offset = 30;
+            if (this.toward === FrozenObj.RIGHT) {
+                this.node.scaleX = 1;
+                this.node.x += offset;
+            } else if (this.toward === FrozenObj.LEFT) {
+                this.node.scaleX = -1;
+                this.node.x -= offset;
+            }
+        }
     },
 
     counterAtk: function () {

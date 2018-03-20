@@ -11,6 +11,12 @@ var DroppingState = require('DroppingState');
 var DropState = require('DropState');
 var RollState = require('RollState');
 
+var LightAtkState = require('LightAtkState');
+var HeavyAtkState = require('HeavyAtkState');
+var SkillState = require('SkillState');
+var BlockState = require('BlockState');
+var CounterAtkState = require('CounterAtkState');
+
 var Input = require('Input');
 
 var Player = cc.Class({
@@ -26,6 +32,10 @@ var Player = cc.Class({
         //注册动画回调
         this.anim.getAnimationState('drop').on('finished', this.returnStand, this);
         this.anim.getAnimationState('roll').on('finished', this.returnStand, this);
+        this.anim.getAnimationState('lightAtk1').on('finished', this.returnStand, this);
+        this.anim.getAnimationState('heavyAtk1').on('finished', this.returnStand, this);
+        this.anim.getAnimationState('skill').on('finished', this.returnStand, this);
+        this.anim.getAnimationState('counterAtk').on('finished', this.returnStand, this);
         // 初始化状态实例
         this.statePool = {
             'standState': new StandState(),
@@ -35,6 +45,11 @@ var Player = cc.Class({
             'droppingState': new DroppingState(),
             'dropState': new DropState(),
             'rollState': new RollState(),
+            'lightAtkState': new LightAtkState(),
+            'heavyAtkState': new HeavyAtkState(),
+            'skillState': new SkillState(),
+            'blockState': new BlockState(),
+            'counterAtkState': new CounterAtkState(),
         };
         //初始化输入实例
         this.inputPool = {
@@ -73,13 +88,6 @@ var Player = cc.Class({
         this.currentInput = this.inputPool.standFlg;
         this.currentInput.changeState(true);
 
-        this.standFlg = true;
-        this.runLeftFlg = false;
-        this.runRightFlg = false;
-        this.jumpFlg = false;
-        this.dropFlg = false;
-
-        this.readyJump = true;
     },
 
     update: function (dt) {
@@ -94,12 +102,10 @@ var Player = cc.Class({
             onKeyPressed: function (keyCode, event) {
                 switch (keyCode) {
                     case kbm.LEFT:
-                        //self.toward = FrozenObj.LEFT;
                         self.inputPool.leftFlg.changeState(true);
                         self.currentInput = self.inputPool.leftFlg;
                         break;
                     case kbm.RIGHT:
-                        //self.toward = FrozenObj.RIGHT;
                         self.inputPool.rightFlg.changeState(true);
                         self.currentInput = self.inputPool.rightFlg;
                         break;
@@ -116,12 +122,20 @@ var Player = cc.Class({
                         self.currentInput = self.inputPool.rollFlg;
                         break;
                     case kbm.LIGHTATK:
+                        self.inputPool.lightAtkFlg.changeState(true);
+                        self.currentInput = self.inputPool.lightAtkFlg;
                         break;
                     case kbm.HEAVYATK:
+                        self.inputPool.heavyAtkFlg.changeState(true);
+                        self.currentInput = self.inputPool.heavyAtkFlg;
                         break;
                     case kbm.SKILL:
+                        self.inputPool.skillFlg.changeState(true);
+                        self.currentInput = self.inputPool.skillFlg;
                         break;
                     case kbm.BLOCK:
+                        self.inputPool.blockFlg.changeState(true);
+                        self.currentInput = self.inputPool.blockFlg;
                         break;
                     default:
                         break;
@@ -130,16 +144,10 @@ var Player = cc.Class({
             onKeyReleased: function (keyCode, envet) {
                 switch (keyCode) {
                     case kbm.LEFT:
-                        /* if (self.inputPool.rightFlg.currentState !== FrozenObj.RELEASED) {
-                            self.toward = FrozenObj.RIGHT;
-                        } */
                         self.inputPool.leftFlg.changeState(false);
                         self.currentInput = self.inputPool.standFlg;
                         break;
                     case kbm.RIGHT:
-                        /* if (self.inputPool.leftFlg.currentState !== FrozenObj.RELEASED) {
-                            self.toward = FrozenObj.LEFT;
-                        } */
                         self.inputPool.rightFlg.changeState(false);
                         self.currentInput = self.inputPool.standFlg;
                         break;
@@ -156,12 +164,20 @@ var Player = cc.Class({
                         self.currentInput = self.inputPool.standFlg;
                         break;
                     case kbm.LIGHTATK:
+                        self.inputPool.lightAtkFlg.changeState(false);
+                        self.currentInput = self.inputPool.standFlg;
                         break;
                     case kbm.HEAVYATK:
+                        self.inputPool.heavyAtkFlg.changeState(false);
+                        self.currentInput = self.inputPool.standFlg;
                         break;
                     case kbm.SKILL:
+                        self.inputPool.skillFlg.changeState(false);
+                        self.currentInput = self.inputPool.standFlg;
                         break;
                     case kbm.BLOCK:
+                        self.inputPool.blockFlg.changeState(false);
+                        self.currentInput = self.inputPool.standFlg;
                         break;
                     default:
                         break;

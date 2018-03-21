@@ -6,7 +6,7 @@ var HeavyAtkState = cc.Class({
 
     properties: {
         name: {
-            default: FrozenObj.HEAVYATK,
+            default: FrozenObj.HEAVY_ATK,
         }
     },
 

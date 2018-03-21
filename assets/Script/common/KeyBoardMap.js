@@ -5,8 +5,8 @@ var KeyBoardMap = {
     DOWN: cc.KEY.s,
     JUMP: cc.KEY.space,
     ROLL: cc.KEY.shift,
-    LIGHTATK: cc.KEY.j,
-    HEAVYATK: cc.KEY.k,
+    LIGHT_ATK: cc.KEY.j,
+    HEAVY_ATK: cc.KEY.k,
     SKILL: cc.KEY.l,
     BLOCK: cc.KEY.i,
 };

@@ -13,19 +13,11 @@ var JumpingState = cc.Class({
     actionHandler: function (player) {
         this.turn(player);
         if (player.ySpeed > 0) {
-            switch (player.currentInput.name) {
-                case FrozenObj.LEFTFLG:
-                case FrozenObj.RIGHTFLG:
-                    player.horMove(player.initXSpeed);
-                    player.jumping();
-                    break;
-                default:
-                    if (!(player.inputPool.leftFlg.currentState === FrozenObj.RELEASED && player.inputPool.rightFlg.currentState === FrozenObj.RELEASED)) {
-                        player.horMove(player.initXSpeed);
-                    }
-                    player.jumping();
-                    break;
+            if (!(player.inputPool.leftFlg.currentState === FrozenObj.RELEASED && player.inputPool.rightFlg.currentState === FrozenObj.RELEASED)) {
+                player.horMove(player.initXSpeed);
             }
+            player.jumping();
+
         } else {
             player.ySpeed = 0;
             player.dropping();

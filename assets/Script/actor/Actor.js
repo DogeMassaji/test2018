@@ -27,6 +27,8 @@ var Actor = cc.Class({
 
         currentInput: null,
 
+        attackState: null,
+
         standFlg: false,
         runLeftFlg: false,
         runRightFlg: false,
@@ -220,7 +222,15 @@ var Actor = cc.Class({
     },
 
     counterAtk: function () {
-        this.doAction(FrozenObj.COUNTERATK);
+        this.doAction(FrozenObj.COUNTER_ATK);
+    },
+
+    lightAtkInAir: function () {
+        this.doAction(FrozenObj.LIGHT_ATK_IN_AIR);
+    },
+
+    heavyAtkInAir: function () {
+        this.doAction(FrozenObj.HEAVY_ATK_IN_AIR);
     },
 
     catched: function () {

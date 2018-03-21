@@ -15,16 +15,16 @@ var BlockState = cc.Class({
         if (player.inputPool.blockFlg.currentState !== FrozenObj.RELEASED) {
             var speed;
             /* switch (player.currentInput.name) {
-                case FrozenObj.LEFTFLG:
+                case FrozenObj.LEFT_FLG:
                     player.xSpeed = -2;
                     player.block(player.xSpeed);
                     break;
-                case FrozenObj.RIGHTFLG:
+                case FrozenObj.RIGHT_FLG:
                     player.xSpeed = 2;
                     player.block(player.xSpeed);
                     break;
-                case FrozenObj.LIGHTATKFLG:
-                case FrozenObj.HEAVYATKFLG:
+                case FrozenObj.LIGHT_ATK_FLG:
+                case FrozenObj.HEAVY_ATK_FLG:
                     break;
                 default:
                     break;

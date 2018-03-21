@@ -12,7 +12,7 @@ var Input = cc.Class({
         var ls = this.lastState;
         this.lastState = this.currentState;
         if (isPressed === true) {
-            this.currentState = this.lastState === FrozenObj.RELEASED ? FrozenObj.PRESSED : FrozenObj.BEINGPRESSED;
+            this.currentState = this.lastState === FrozenObj.RELEASED ? FrozenObj.PRESSED : FrozenObj.BEING_PRESSED;
         } else if (isPressed === false) {
             this.currentState = FrozenObj.RELEASED;
         }

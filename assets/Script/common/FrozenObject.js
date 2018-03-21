@@ -20,13 +20,13 @@ var FrozenObject = {
     DROP: Object.freeze('drop'),
     ROLL: Object.freeze('roll'),
 
-    LIGHTATK: Object.freeze('lightAtk'),
-    HEAVYATK: Object.freeze('heavyAtk'),
+    LIGHT_ATK: Object.freeze('lightAtk'),
+    HEAVY_ATK: Object.freeze('heavyAtk'),
     SKILL: Object.freeze('skill'),
     BLOCK: Object.freeze('block'),
-    COUNTERATK: Object.freeze('counterAtk'),
-    JUMPLIGHTATK: Object.freeze('jumpLightAtk'),
-    JUMPHEAVYATK: Object.freeze('jumpHeavyAtk'),
+    COUNTER_ATK: Object.freeze('counterAtk'),
+    LIGHT_ATK_IN_AIR: Object.freeze('lightAtkInAir'),
+    HEAVY_ATK_IN_AIR: Object.freeze('heavyAtkInAir'),
 
     ATTACKED: Object.freeze('attacked'),
     ATTACKEDHARD: Object.freeze('attackedHard'),
@@ -35,23 +35,30 @@ var FrozenObject = {
 
 
     // Input flag
-    STANDFLG: Object.freeze('standFlg'),
-    LEFTFLG: Object.freeze('leftFlg'),
-    RIGHTFLG: Object.freeze('rightFlg'),
-    UPFLG: Object.freeze('upFlg'),
-    DOWNFLG: Object.freeze('downFlg'),
-    JUMPFLG: Object.freeze('jumpFlg'),
-    ROLLFLG: Object.freeze('rollFlg'),
-    LIGHTATKFLG: Object.freeze('lightAtkFlg'),
-    HEAVYATKFLG: Object.freeze('heavyAtkFlg'),
-    SKILLFLG: Object.freeze('skillFlg'),
-    BLOCKFLG: Object.freeze('blockFlg'),
+    STAND_FLG: Object.freeze('standFlg'),
+    LEFT_FLG: Object.freeze('leftFlg'),
+    RIGHT_FLG: Object.freeze('rightFlg'),
+    UP_FLG: Object.freeze('upFlg'),
+    DOWN_FLG: Object.freeze('downFlg'),
+    JUMP_FLG: Object.freeze('jumpFlg'),
+    ROLL_FLG: Object.freeze('rollFlg'),
+    LIGHT_ATK_FLG: Object.freeze('lightAtkFlg'),
+    HEAVY_ATK_FLG: Object.freeze('heavyAtkFlg'),
+    SKILL_FLG: Object.freeze('skillFlg'),
+    BLOCK_FLG: Object.freeze('blockFlg'),
 
 
     // Input state
     RELEASED: Object.freeze('released'),
     PRESSED: Object.freeze('pressed'),
-    BEINGPRESSED: Object.freeze('beingPressed'),
+    BEING_PRESSED: Object.freeze('beingPressed'),
+
+
+    // Attack state
+    SHAKE_BEFORE: Object.freeze('shakeBefore'),
+    ATTACKING: Object.freeze('attacking'),
+    SHAKE_AFTER: Object.freeze('shakeAfter'),
+    NOT_ATTACKING: Object.freeze('notAttacking'),
 };
 
 module.exports = FrozenObject;

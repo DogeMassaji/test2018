@@ -6,12 +6,12 @@ var CounterAtkState = cc.Class({
 
     properties: {
         name: {
-            default: FrozenObj.COUNTERATK,
+            default: FrozenObj.COUNTER_ATK,
         }
     },
 
     actionHandler: function (player) {
-        player.lastState = player.statePool.CounterAtkState;
+        player.lastState = player.statePool.counterAtkState;
     },
 });
 

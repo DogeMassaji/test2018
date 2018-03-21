@@ -232,7 +232,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "ff890b0f-5d70-4756-9bf0-7cc7f39050a9"
+      "__uuid__": "098c1937-51da-4f56-9f3b-b0c619ce29b1"
     },
     "_type": 0,
     "_sizeMode": 2,
@@ -360,6 +360,7 @@
     "lastState": null,
     "inputPool": null,
     "currentInput": null,
+    "attackState": null,
     "standFlg": false,
     "runLeftFlg": false,
     "runRightFlg": false,

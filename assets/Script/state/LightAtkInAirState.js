@@ -1,18 +1,18 @@
 var State = require('State');
 var FrozenObj = require('FrozenObject');
 
-var LightAtkState = cc.Class({
+var LightAtkInAirState = cc.Class({
     extends: State,
 
     properties: {
         name: {
-            default: FrozenObj.LIGHT_ATK,
+            default: FrozenObj.LIGHT_ATK_IN_AIR,
         }
     },
 
     actionHandler: function (player) {
-        player.lastState = player.statePool.lightAtkState;
+        player.lastState = player.statePool.lightAtkInAirState;
     },
 });
 
-module.exports = LightAtkState;
+module.exports = LightAtkInAirState;

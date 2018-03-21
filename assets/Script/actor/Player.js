@@ -16,6 +16,8 @@ var HeavyAtkState = require('HeavyAtkState');
 var SkillState = require('SkillState');
 var BlockState = require('BlockState');
 var CounterAtkState = require('CounterAtkState');
+var LightAtkInAirState = require('LightAtkInAirState');
+var HeavyAtkInAirState = require('HeavyAtkInAirState');
 
 var Input = require('Input');
 
@@ -25,17 +27,20 @@ var Player = cc.Class({
     properties: {
 
     },
-
+    //做完一次性动作回归状态应该根据输入池的状态来判断
+    //不能全部都回归stand
+    //比如在攻击期间按住block持续到攻击结束后，此时应该会归到block
     onLoad: function () {
         // 动画状态
         this.anim = this.getComponent(cc.Animation);
         //注册动画回调
-        this.anim.getAnimationState('drop').on('finished', this.returnStand, this);
-        this.anim.getAnimationState('roll').on('finished', this.returnStand, this);
-        this.anim.getAnimationState('lightAtk1').on('finished', this.returnStand, this);
-        this.anim.getAnimationState('heavyAtk1').on('finished', this.returnStand, this);
-        this.anim.getAnimationState('skill').on('finished', this.returnStand, this);
-        this.anim.getAnimationState('counterAtk').on('finished', this.returnStand, this);
+        this.anim.getAnimationState('drop').on('finished', this.returnDefault, this);
+        this.anim.getAnimationState('roll').on('finished', this.returnDefault, this);
+        this.anim.getAnimationState('lightAtk1').on('finished', this.returnDefault, this);
+        this.anim.getAnimationState('heavyAtk1').on('finished', this.returnDefault, this);
+        this.anim.getAnimationState('skill').on('finished', this.returnDefault, this);
+        this.anim.getAnimationState('counterAtk').on('finished', this.returnDefault, this);
+        this.anim.getAnimationState('lightAtkInAir').on('finished', this.returnDropping, this);
         // 初始化状态实例
         this.statePool = {
             'standState': new StandState(),
@@ -50,6 +55,8 @@ var Player = cc.Class({
             'skillState': new SkillState(),
             'blockState': new BlockState(),
             'counterAtkState': new CounterAtkState(),
+            'lightAtkInAirState': new LightAtkInAirState(),
+            'heavyAtkInAirState': new HeavyAtkInAirState(),
         };
         //初始化输入实例
         this.inputPool = {
@@ -80,11 +87,13 @@ var Player = cc.Class({
         // 初始化上一帧状态实例
         this.lastState = this.statePool.standState;
 
+        this.attackState = FrozenObj.NOT_ATTACKING;
+
         for (var i in this.inputPool) {
             this.inputPool[i].name = i;
         }
 
-        this.currentFlg = FrozenObj.STANDFLG;
+        this.currentFlg = FrozenObj.STAND_FLG;
         this.currentInput = this.inputPool.standFlg;
         this.currentInput.changeState(true);
 
@@ -121,11 +130,11 @@ var Player = cc.Class({
                         self.inputPool.rollFlg.changeState(true);
                         self.currentInput = self.inputPool.rollFlg;
                         break;
-                    case kbm.LIGHTATK:
+                    case kbm.LIGHT_ATK:
                         self.inputPool.lightAtkFlg.changeState(true);
                         self.currentInput = self.inputPool.lightAtkFlg;
                         break;
-                    case kbm.HEAVYATK:
+                    case kbm.HEAVY_ATK:
                         self.inputPool.heavyAtkFlg.changeState(true);
                         self.currentInput = self.inputPool.heavyAtkFlg;
                         break;
@@ -163,11 +172,11 @@ var Player = cc.Class({
                         self.inputPool.rollFlg.changeState(false);
                         self.currentInput = self.inputPool.standFlg;
                         break;
-                    case kbm.LIGHTATK:
+                    case kbm.LIGHT_ATK:
                         self.inputPool.lightAtkFlg.changeState(false);
                         self.currentInput = self.inputPool.standFlg;
                         break;
-                    case kbm.HEAVYATK:
+                    case kbm.HEAVY_ATK:
                         self.inputPool.heavyAtkFlg.changeState(false);
                         self.currentInput = self.inputPool.standFlg;
                         break;
@@ -199,8 +208,31 @@ var Player = cc.Class({
 
     /**
      * 动画结束回调函数
+     * 回归default状态
      */
-    returnStand: function () {
-        this.currentState = this.statePool.standState;
+    returnDefault: function () {
+        /* this.currentState = this.statePool.standState; */
+        this.statePool.standState.defaultState(this);
     },
+
+    /**
+     * 动画结束回调函数
+     * 回归dropping状态
+     */
+    returnDropping: function () {
+        this.currentState = this.statePool.droppingState;
+    },
+
+    /**
+     * 角色攻击回调函数
+     */
+    shakeBeforeAttack: function (state) {
+        if (state == 'shakeBefore') {
+            this.attackState = FrozenObj.SHAKE_BEFORE;
+        } else if (state == 'attacking') {
+            this.attackState = FrozenObj.ATTACKING;
+        } else if (state == 'shakeAfter') {
+            this.attackState = FrozenObj.SHAKE_AFTER;
+        }
+    }
 });

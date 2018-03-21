@@ -13,18 +13,17 @@ var DroppingState = cc.Class({
     actionHandler: function (player) {
         this.turn(player);
         if (player.node.y + player.ySpeed - player.accSpeed > FrozenObj.HORIZONTAL_LINE) {
-            switch (player.currentInput.name) {
-                case FrozenObj.LEFTFLG:
-                case FrozenObj.RIGHTFLG:
+            if (player.inputPool.lightAtkFlg.currentState === FrozenObj.PRESSED) {
+                player.lightAtkInAir();
+                player.currentState = player.statePool.lightAtkInAirState;
+            } else if (player.inputPool.heavyAtkFlg.currentState === FrozenObj.PRESSED) {
+                player.heavyAtkInAir();
+                player.currentState = player.statePool.heavyAtkInAirState;
+            } else {
+                if (!(player.inputPool.leftFlg.currentState === FrozenObj.RELEASED && player.inputPool.rightFlg.currentState === FrozenObj.RELEASED)) {
                     player.horMove(player.initXSpeed);
-                    player.dropping();
-                    break;
-                default:
-                    if (!(player.inputPool.leftFlg.currentState === FrozenObj.RELEASED && player.inputPool.rightFlg.currentState === FrozenObj.RELEASED)) {
-                        player.horMove(player.initXSpeed);
-                    }
-                    player.dropping();
-                    break;
+                }
+                player.dropping();
             }
         } else {
             player.node.y = FrozenObj.HORIZONTAL_LINE;

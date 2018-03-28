@@ -11,10 +11,13 @@ var DroppingState = require('DroppingState');
 var DropState = require('DropState');
 var RollState = require('RollState');
 
-var LightAtkState = require('LightAtkState');
-var HeavyAtkState = require('HeavyAtkState');
+var LightAtk1State = require('LightAtk1State');
+var LightAtk2State = require('LightAtk2State');
+var LightAtk3State = require('LightAtk3State');
+var HeavyAtk1State = require('HeavyAtk1State');
 var SkillState = require('SkillState');
 var BlockState = require('BlockState');
+var RollAtkState = require('RollAtkState');
 var CounterAtkState = require('CounterAtkState');
 var LightAtkInAirState = require('LightAtkInAirState');
 var HeavyAtkInAirState = require('HeavyAtkInAirState');
@@ -34,13 +37,17 @@ var Player = cc.Class({
         // 动画状态
         this.anim = this.getComponent(cc.Animation);
         //注册动画回调
-        this.anim.getAnimationState('drop').on('finished', this.returnDefault, this);
-        this.anim.getAnimationState('roll').on('finished', this.returnDefault, this);
-        this.anim.getAnimationState('lightAtk1').on('finished', this.returnDefault, this);
-        this.anim.getAnimationState('heavyAtk1').on('finished', this.returnDefault, this);
-        this.anim.getAnimationState('skill').on('finished', this.returnDefault, this);
-        this.anim.getAnimationState('counterAtk').on('finished', this.returnDefault, this);
-        this.anim.getAnimationState('lightAtkInAir').on('finished', this.returnDropping, this);
+        this.anim.getAnimationState(FrozenObj.DROP).on('finished', this.returnDefault, this);
+        this.anim.getAnimationState(FrozenObj.ROLL).on('finished', this.returnDefaultOfRoll, this);
+        this.anim.getAnimationState(FrozenObj.LIGHT_ATK_1).on('finished', this.returnDefault, this);
+        this.anim.getAnimationState(FrozenObj.LIGHT_ATK_2).on('finished', this.returnDefault, this);
+        this.anim.getAnimationState(FrozenObj.LIGHT_ATK_3).on('finished', this.returnDefault, this);
+        this.anim.getAnimationState(FrozenObj.HEAVY_ATK_1).on('finished', this.returnDefault, this);
+        this.anim.getAnimationState(FrozenObj.SKILL).on('finished', this.returnDefault, this);
+        this.anim.getAnimationState(FrozenObj.COUNTER_ATK).on('finished', this.returnDefault, this);
+        this.anim.getAnimationState(FrozenObj.LIGHT_ATK_IN_AIR).on('finished', this.returnDropping, this);
+        this.anim.getAnimationState(FrozenObj.HEAVY_ATK_IN_AIR).on('finished', this.returnDefault, this);
+        this.anim.getAnimationState(FrozenObj.ROLL_ATK).on('finished', this.returnDefault, this);
         // 初始化状态实例
         this.statePool = {
             'standState': new StandState(),
@@ -50,11 +57,14 @@ var Player = cc.Class({
             'droppingState': new DroppingState(),
             'dropState': new DropState(),
             'rollState': new RollState(),
-            'lightAtkState': new LightAtkState(),
-            'heavyAtkState': new HeavyAtkState(),
+            'lightAtk1State': new LightAtk1State(),
+            'lightAtk2State': new LightAtk2State(),
+            'lightAtk3State': new LightAtk3State(),
+            'heavyAtk1State': new HeavyAtk1State(),
             'skillState': new SkillState(),
             'blockState': new BlockState(),
             'counterAtkState': new CounterAtkState(),
+            'rollAtkState': new RollAtkState(),
             'lightAtkInAirState': new LightAtkInAirState(),
             'heavyAtkInAirState': new HeavyAtkInAirState(),
         };
@@ -88,6 +98,8 @@ var Player = cc.Class({
         this.lastState = this.statePool.standState;
 
         this.attackState = FrozenObj.NOT_ATTACKING;
+
+        this.comboFlg = false;
 
         for (var i in this.inputPool) {
             this.inputPool[i].name = i;
@@ -213,6 +225,16 @@ var Player = cc.Class({
     returnDefault: function () {
         /* this.currentState = this.statePool.standState; */
         this.statePool.standState.defaultState(this);
+        this.attackState = FrozenObj.NOT_ATTACKING;
+        this.comboFlg = false;
+    },
+
+    returnDefaultOfRoll: function () {
+        if (this.comboFlg) {
+            this.currentState = this.statePool.rollAtkState;
+        } else {
+            this.returnDefault();
+        }
     },
 
     /**
@@ -226,13 +248,16 @@ var Player = cc.Class({
     /**
      * 角色攻击回调函数
      */
-    shakeBeforeAttack: function (state) {
-        if (state == 'shakeBefore') {
+    shakeOfAttack: function (state) {
+        if (state === FrozenObj.SHAKE_BEFORE) {
             this.attackState = FrozenObj.SHAKE_BEFORE;
-        } else if (state == 'attacking') {
+            this.comboFlg = false;
+        } else if (state === FrozenObj.ATTACKING) {
             this.attackState = FrozenObj.ATTACKING;
-        } else if (state == 'shakeAfter') {
+        } else if (state == FrozenObj.SHAKE_AFTER) {
             this.attackState = FrozenObj.SHAKE_AFTER;
+        } else if (state == FrozenObj.NOT_ATTACKING) {
+            this.attackState = FrozenObj.NOT_ATTACKING;
         }
     }
 });

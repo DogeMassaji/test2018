@@ -78,5 +78,13 @@
       }
     }
   },
-  "events": []
+  "events": [
+    {
+      "frame": 0.23333333333333334,
+      "func": "shakeOfAttack",
+      "params": [
+        "shakeAfter"
+      ]
+    }
+  ]
 }

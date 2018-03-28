@@ -20,11 +20,14 @@ var FrozenObject = {
     DROP: Object.freeze('drop'),
     ROLL: Object.freeze('roll'),
 
-    LIGHT_ATK: Object.freeze('lightAtk'),
-    HEAVY_ATK: Object.freeze('heavyAtk'),
+    LIGHT_ATK_1: Object.freeze('lightAtk1'),
+    LIGHT_ATK_2: Object.freeze('lightAtk2'),
+    LIGHT_ATK_3: Object.freeze('lightAtk3'),
+    HEAVY_ATK_1: Object.freeze('heavyAtk1'),
     SKILL: Object.freeze('skill'),
     BLOCK: Object.freeze('block'),
     COUNTER_ATK: Object.freeze('counterAtk'),
+    ROLL_ATK: Object.freeze('rollAtk'),
     LIGHT_ATK_IN_AIR: Object.freeze('lightAtkInAir'),
     HEAVY_ATK_IN_AIR: Object.freeze('heavyAtkInAir'),
 

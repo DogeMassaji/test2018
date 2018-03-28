@@ -78,5 +78,27 @@
       }
     }
   },
-  "events": []
+  "events": [
+    {
+      "frame": 0,
+      "func": "shakeOfAttack",
+      "params": [
+        "shakeBefore"
+      ]
+    },
+    {
+      "frame": 0.26666666666666666,
+      "func": "shakeOfAttack",
+      "params": [
+        "attacking"
+      ]
+    },
+    {
+      "frame": 0.43333333333333335,
+      "func": "shakeOfAttack",
+      "params": [
+        "shakeAfter"
+      ]
+    }
+  ]
 }

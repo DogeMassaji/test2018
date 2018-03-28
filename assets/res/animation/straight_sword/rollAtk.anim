@@ -3,7 +3,7 @@
   "_name": "longRngAtk1",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 0.26666666666666666,
+  "_duration": 0.3333333333333333,
   "sample": 30,
   "speed": 1,
   "wrapMode": 1,
@@ -45,19 +45,19 @@
             }
           },
           {
-            "frame": 0.16666666666666666,
+            "frame": 0.23333333333333334,
             "value": {
               "__uuid__": "44fd8c62-d4b2-4737-bc17-688309f264e0"
             }
           },
           {
-            "frame": 0.2,
+            "frame": 0.26666666666666666,
             "value": {
               "__uuid__": "9adb9562-8794-483b-82fc-20da9fceedda"
             }
           },
           {
-            "frame": 0.23333333333333334,
+            "frame": 0.3,
             "value": {
               "__uuid__": "9adb9562-8794-483b-82fc-20da9fceedda"
             }
@@ -66,5 +66,27 @@
       }
     }
   },
-  "events": []
+  "events": [
+    {
+      "frame": 0,
+      "func": "shakeOfAttack",
+      "params": [
+        "shakeBefore"
+      ]
+    },
+    {
+      "frame": 0.13333333333333333,
+      "func": "shakeOfAttack",
+      "params": [
+        "attacking"
+      ]
+    },
+    {
+      "frame": 0.26666666666666666,
+      "func": "shakeOfAttack",
+      "params": [
+        "shakeAfter"
+      ]
+    }
+  ]
 }

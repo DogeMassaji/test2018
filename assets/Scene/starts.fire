@@ -205,7 +205,7 @@
     "_contentSize": {
       "__type__": "cc.Size",
       "width": 168,
-      "height": 84
+      "height": 116
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -232,7 +232,7 @@
     },
     "_enabled": true,
     "_spriteFrame": {
-      "__uuid__": "098c1937-51da-4f56-9f3b-b0c619ce29b1"
+      "__uuid__": "96167448-03dd-41eb-a5f6-97845391f81f"
     },
     "_type": 0,
     "_sizeMode": 2,
@@ -361,11 +361,7 @@
     "inputPool": null,
     "currentInput": null,
     "attackState": null,
-    "standFlg": false,
-    "runLeftFlg": false,
-    "runRightFlg": false,
-    "jumpFlg": false,
-    "dropFlg": false,
+    "comboFlg": false,
     "anim": null
   },
   {

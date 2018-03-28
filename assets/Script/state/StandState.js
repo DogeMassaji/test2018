@@ -41,7 +41,7 @@ var StandState = cc.Class({
             case FrozenObj.LIGHT_ATK_FLG:
                 if (player.inputPool.lightAtkFlg.currentState === FrozenObj.PRESSED) {
                     player.lightAtk1();
-                    player.currentState = player.statePool.lightAtkState;
+                    player.currentState = player.statePool.lightAtk1State;
                 } else {
                     this.defaultState(player);
                 }
@@ -49,7 +49,7 @@ var StandState = cc.Class({
             case FrozenObj.HEAVY_ATK_FLG:
                 if (player.inputPool.heavyAtkFlg.currentState === FrozenObj.PRESSED) {
                     player.heavyAtk1();
-                    player.currentState = player.statePool.heavyAtkState;
+                    player.currentState = player.statePool.heavyAtk1State;
                 } else {
                     this.defaultState(player);
                 }

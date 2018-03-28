@@ -29,11 +29,7 @@ var Actor = cc.Class({
 
         attackState: null,
 
-        standFlg: false,
-        runLeftFlg: false,
-        runRightFlg: false,
-        jumpFlg: false,
-        dropFlg: false,
+        comboFlg: false,
 
         // 动画组件
         anim: null,
@@ -177,6 +173,34 @@ var Actor = cc.Class({
         }
     },
 
+    lightAtk2: function () {
+        if (!this.anim.getAnimationState('lightAtk2').isPlaying) {
+            this.anim.play('lightAtk2');
+            var offset = 10;
+            if (this.toward === FrozenObj.RIGHT) {
+                this.node.scaleX = 1;
+                this.node.x += offset;
+            } else if (this.toward === FrozenObj.LEFT) {
+                this.node.scaleX = -1;
+                this.node.x -= offset;
+            }
+        }
+    },
+
+    lightAtk3: function () {
+        if (!this.anim.getAnimationState('lightAtk3').isPlaying) {
+            this.anim.play('lightAtk3');
+            var offset = 10;
+            if (this.toward === FrozenObj.RIGHT) {
+                this.node.scaleX = 1;
+                this.node.x += offset;
+            } else if (this.toward === FrozenObj.LEFT) {
+                this.node.scaleX = -1;
+                this.node.x -= offset;
+            }
+        }
+    },
+
     clsRngAtk2: function () {
         this.doAction(FrozenObj.CLSRNGATK2);
     },
@@ -223,6 +247,10 @@ var Actor = cc.Class({
 
     counterAtk: function () {
         this.doAction(FrozenObj.COUNTER_ATK);
+    },
+
+    rollAtk: function () {
+        this.doAction(FrozenObj.ROLL_ATK);
     },
 
     lightAtkInAir: function () {

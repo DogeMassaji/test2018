@@ -11,6 +11,9 @@ var RollState = cc.Class({
     },
 
     actionHandler: function (player) {
+        if (player.attackState === FrozenObj.SHAKE_AFTER && player.currentInput === player.inputPool.lightAtkFlg) {
+            player.comboFlg = true;
+        }
         player.roll();
         player.lastState = player.statePool.rollState;
     },

@@ -505,6 +505,7 @@
     "_enabled": true,
     "playerNode": {
       "__id__": 4
-    }
+    },
+    "enemyNode": null
   }
 ]

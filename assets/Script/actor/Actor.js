@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 var FrozenObj = require('FrozenObject');
 
 var Actor = cc.Class({
@@ -75,7 +76,7 @@ var Actor = cc.Class({
      * @description 在动作进行期间水平方向上可转向并移动
      */
     horMove: function (speed) {
-        var position = this.node.getPosition();
+        let position = this.node.getPosition();
 
         if (this.toward === FrozenObj.RIGHT) {
             this.node.scaleX = 1;
@@ -162,7 +163,7 @@ var Actor = cc.Class({
     lightAtk1: function () {
         if (!this.anim.getAnimationState('lightAtk1').isPlaying) {
             this.anim.play('lightAtk1');
-            var offset = 30;
+            let offset = 30;
             if (this.toward === FrozenObj.RIGHT) {
                 this.node.scaleX = 1;
                 this.node.x += offset;
@@ -176,7 +177,7 @@ var Actor = cc.Class({
     lightAtk2: function () {
         if (!this.anim.getAnimationState('lightAtk2').isPlaying) {
             this.anim.play('lightAtk2');
-            var offset = 10;
+            let offset = 10;
             if (this.toward === FrozenObj.RIGHT) {
                 this.node.scaleX = 1;
                 this.node.x += offset;
@@ -190,7 +191,7 @@ var Actor = cc.Class({
     lightAtk3: function () {
         if (!this.anim.getAnimationState('lightAtk3').isPlaying) {
             this.anim.play('lightAtk3');
-            var offset = 10;
+            let offset = 10;
             if (this.toward === FrozenObj.RIGHT) {
                 this.node.scaleX = 1;
                 this.node.x += offset;
@@ -212,7 +213,7 @@ var Actor = cc.Class({
     heavyAtk1: function () {
         if (!this.anim.getAnimationState('heavyAtk1').isPlaying) {
             this.anim.play('heavyAtk1');
-            var offset = 30;
+            let offset = 30;
             if (this.toward === FrozenObj.RIGHT) {
                 this.node.scaleX = 1;
                 this.node.x += offset;
@@ -234,7 +235,7 @@ var Actor = cc.Class({
     skill: function () {
         if (!this.anim.getAnimationState('skill').isPlaying) {
             this.anim.play('skill');
-            var offset = 30;
+            let offset = 30;
             if (this.toward === FrozenObj.RIGHT) {
                 this.node.scaleX = 1;
                 this.node.x += offset;

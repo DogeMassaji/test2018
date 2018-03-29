@@ -3,7 +3,7 @@
   "_name": "lightAtk1",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 0.5333333333333333,
+  "_duration": 0.6,
   "sample": 30,
   "speed": 1,
   "wrapMode": 1,
@@ -69,7 +69,7 @@
             }
           },
           {
-            "frame": 0.5,
+            "frame": 0.5666666666666667,
             "value": {
               "__uuid__": "95496237-89d2-4cd6-b717-367f2e13535a"
             }

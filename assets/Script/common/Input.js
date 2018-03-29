@@ -1,3 +1,4 @@
+/*jshint esversion: 6 */
 var FrozenObj = require('FrozenObject');
 
 var Input = cc.Class({
@@ -9,11 +10,11 @@ var Input = cc.Class({
     },
 
     changeState: function (isPressed) {
-        var ls = this.lastState;
+        let ls = this.lastState;
         this.lastState = this.currentState;
-        if (isPressed === true) {
+        if (isPressed) {
             this.currentState = this.lastState === FrozenObj.RELEASED ? FrozenObj.PRESSED : FrozenObj.BEING_PRESSED;
-        } else if (isPressed === false) {
+        } else {
             this.currentState = FrozenObj.RELEASED;
         }
     },

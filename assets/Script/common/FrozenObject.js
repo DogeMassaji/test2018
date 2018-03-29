@@ -62,6 +62,12 @@ var FrozenObject = {
     ATTACKING: Object.freeze('attacking'),
     SHAKE_AFTER: Object.freeze('shakeAfter'),
     NOT_ATTACKING: Object.freeze('notAttacking'),
+
+
+    // Behavior tree status
+    SUCCESS: Object.freeze('success'),
+    FAILURE: Object.freeze('failure'),
+    RUNNING: Object.freeze('runninng'),
 };
 
 module.exports = FrozenObject;

@@ -1,9 +1,9 @@
 {
   "__type__": "cc.AnimationClip",
-  "_name": "clsRngAtk2",
+  "_name": "lightAtk2",
   "_objFlags": 0,
   "_rawFiles": null,
-  "_duration": 0.5333333333333333,
+  "_duration": 0.6,
   "sample": 30,
   "speed": 1,
   "wrapMode": 1,
@@ -45,7 +45,7 @@
             }
           },
           {
-            "frame": 0.5,
+            "frame": 0.5666666666666667,
             "value": {
               "__uuid__": "6bdd647f-2f7b-483e-be8d-a6293f8610fe"
             }

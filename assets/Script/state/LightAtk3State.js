@@ -11,12 +11,13 @@ var LightAtk3State = cc.Class({
     },
 
     actionHandler: function (player) {
-        if (player.attackState == FrozenObj.SHAKE_AFTER && player.currentInput === player.inputPool.lightAtkFlg) {
-            player.lightAtk3();
+        if (player.attackState == FrozenObj.SHAKE_AFTER && player.currentInput === player.inputPool.lightAtkFlg && player.inputPool.lightAtkFlg.currentState === FrozenObj.PRESSED) {
+            player.lightAtk1();
             player.comboFlg = true;
             player.currentState = player.statePool.lightAtk1State;
+        } else {
+            player.lightAtk3();
         }
-        player.lightAtk3();
         player.lastState = player.statePool.lightAtk3State;
     },
 });

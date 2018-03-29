@@ -8,11 +8,15 @@ cc.Class({
             default: null,
             type: cc.Node,
         },
+        enemyNode: {
+            default: null,
+            type: cc.Prefab,
+        },
     },
 
     onLoad: function () {
         this.player = this.playerNode.getComponent('Player');
-        //this.inputHandler();
+        /* this.enemy = this.enemyNode.getComponent('Enemy'); */
     },
 
     start: function () {
